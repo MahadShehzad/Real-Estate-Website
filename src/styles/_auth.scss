@@ -1,0 +1,51 @@
+/* Auth pages (login/signup). */
+
+.auth-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-5);
+  background: linear-gradient(160deg, var(--brand-600) 0%, var(--brand-900) 100%);
+}
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface-1);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+/* signup's account-type picker uses the same visual language as the shared
+   .option-card (see _components.scss) — kept as its own selector for now
+   since signup.html still uses the old class name; both are defined
+   identically and collapse into one once signup.html migrates in Phase 5. */
+.role-pick {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: var(--space-4) var(--space-3);
+  border: 2px solid var(--bs-border-color);
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+  color: var(--color-ink);
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.role-pick:hover {
+  border-color: var(--c-clay-500);
+  background: var(--c-sand-100);
+}
+.role-pick--on,
+.role-pick--on:hover {
+  border-color: var(--c-teal);
+  background: var(--c-teal-100);
+  box-shadow: 0 0 0 3px rgba(15, 48, 64, 0.12);
+}
+.role-pick .check {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  color: var(--c-teal);
+  font-size: 1rem;
+}

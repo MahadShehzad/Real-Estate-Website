@@ -5,12 +5,14 @@ import { AuthService } from '../../../core/services/auth.service';
 import { CartService } from '../../../core/services/cart.service';
 import { WishlistService } from '../../../core/services/wishlist.service';
 import { homeRouteFor } from '../../../core/models/user.model';
+import { LogoComponent } from '../../../shared/ui/logo';
+import { ThemeToggleComponent } from '../../../shared/ui/theme-toggle';
 
 type SignupRole = 'Customer' | 'Vendor';
 
 @Component({
   selector: 'app-signup',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, LogoComponent, ThemeToggleComponent],
   templateUrl: './signup.html',
 })
 export class SignupComponent {

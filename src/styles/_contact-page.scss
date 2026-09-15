@@ -1,0 +1,73 @@
+/* Contact / "make an enquiry" page — full-bleed gradient hero + glass form card. */
+
+.contact-page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--brand-600) 0%, var(--brand-900) 55%, var(--c-clay-600) 130%);
+  position: relative;
+  overflow: hidden;
+}
+.contact-page::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(234, 201, 193, 0.35) 0%, transparent 70%);
+}
+.contact-page::after {
+  content: "";
+  position: absolute;
+  bottom: -160px;
+  left: -100px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(150, 105, 90, 0.3) 0%, transparent 70%);
+}
+
+.contact-page__content {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+}
+
+.contact-page__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--c-clay-300);
+  margin-bottom: var(--space-2);
+}
+.contact-page__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--space-3);
+}
+.contact-page__subtitle {
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 440px;
+}
+
+.contact-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6);
+}
+
+[data-theme="dark"] .contact-card {
+  background: rgba(47, 35, 32, 0.88);
+  border-color: rgba(255, 255, 255, 0.08);
+}

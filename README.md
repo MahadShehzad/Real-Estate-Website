@@ -1,9 +1,10 @@
-# onlineStore
+# Shopnest
 
 A full multi-vendor marketplace (Customer / Vendor / Admin) — **Angular 22**
 (standalone + signals, SSR) frontend, **.NET 10 Web API + EF Core + SQL Server**
-backend, **Bootstrap 5** re-skinned with the project palette
-(`#0F3040` `#464858` `#A56F63` `#D99B7F`). Mobile-first / responsive throughout.
+backend, **Bootstrap 5** re-skinned with a custom SCSS design-token system.
+Warm almond palette (`#D3AB9E` `#EAC9C1` `#EBD8D0` `#FFFBFF` `#FEFEFF`) with a
+full light/dark theme. Mobile-first / responsive throughout.
 
 ## What's implemented
 
@@ -39,6 +40,19 @@ backend, **Bootstrap 5** re-skinned with the project palette
 - **Commission & fees** — platform defaults + per-vendor commission
 - **Dispute handling** — resolve / reject with resolution notes
 - Platform analytics
+
+**Design system & UI**
+- SCSS design tokens (`src/styles/`) — colour, spacing, radius, shadow, type and
+  z-index scales; every component reads tokens, never raw hex
+- **Light / dark theme** — signal-based `ThemeService`, persisted to
+  `localStorage`, honours `prefers-color-scheme`, no flash-of-wrong-theme on load
+- Theme switch animates via the **View Transitions API** (circular reveal from the
+  toggle) with a colour-crossfade fallback
+- Branded **splash screen** on first paint (inline SVG logo, removed after hydration)
+- Storefront **top-nav + mega menu** for customers, sidebar shell for vendor/admin
+- Home **advanced search** — tabs, category/brand filters and a dual-thumb price
+  range slider that deep-links into the catalogue
+- Contact / enquiry page with a validated reactive form
 
 **Non-functional**
 - Every feature route is lazy-loaded and role-guarded
@@ -89,13 +103,17 @@ server/                        .NET 10 Web API
   Dtos/                         request/response records + mappers
 src/app/
   core/       models · services (catalog, cart, wishlist, order, address,
-              review, vendor, admin, dispute, meta, auth, token, notification)
-              guards · interceptors
+              review, vendor, admin, dispute, meta, auth, token, notification,
+              theme) · guards · interceptors
   shared/     ui (product-card, pagination, star-rating, bar-chart, spinner,
-              empty-state, confirm-dialog, order-status-badge) · pipes · directives
-  layout/shell/   responsive shell + role nav catalogue
-  features/   home · auth · customer/* · vendor/* · admin/* · account · forbidden
+              empty-state, confirm-dialog, order-status-badge, logo,
+              theme-toggle, mega-menu, hero-banner, stat-card, page-header,
+              breadcrumb) · pipes · directives
+  layout/shell/   responsive shell (top-nav or sidebar by role) + nav catalogue
+  features/   home · auth · contact · customer/* · vendor/* · admin/* ·
+              account · forbidden
   app.routes.ts    lazy, role-guarded routes
+src/styles/   SCSS design tokens + per-area partials (dark mode last on purpose)
 ```
 
 ## Deep dive

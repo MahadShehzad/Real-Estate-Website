@@ -1,0 +1,103 @@
+/* Brand-tinted button/bg variants Bootstrap doesn't ship, plus small reusable
+   utility patterns shared across several pages. */
+
+.btn-primary {
+  --bs-btn-bg: var(--c-teal);
+  --bs-btn-border-color: var(--c-teal);
+  --bs-btn-hover-bg: var(--c-teal-600);
+  --bs-btn-hover-border-color: var(--c-teal-600);
+  --bs-btn-active-bg: var(--c-teal-600);
+  --bs-btn-active-border-color: var(--c-teal-600);
+  --bs-btn-disabled-bg: var(--c-teal);
+  --bs-btn-disabled-border-color: var(--c-teal);
+}
+
+.btn-accent {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--c-clay-500);
+  --bs-btn-border-color: var(--c-clay-500);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--c-clay-600);
+  --bs-btn-hover-border-color: var(--c-clay-600);
+  --bs-btn-active-bg: var(--c-clay-600);
+  --bs-btn-active-border-color: var(--c-clay-600);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--c-clay-500);
+  --bs-btn-disabled-border-color: var(--c-clay-500);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--c-teal);
+  --bs-btn-border-color: var(--c-teal);
+  --bs-btn-hover-bg: var(--c-teal);
+  --bs-btn-hover-border-color: var(--c-teal);
+  --bs-btn-active-bg: var(--c-teal);
+}
+
+.text-brand { color: var(--brand-fg) !important; }
+.text-accent { color: var(--accent-fg) !important; }
+.bg-brand { background-color: var(--c-teal) !important; }
+.bg-brand-gradient {
+  background: linear-gradient(160deg, var(--brand-600) 0%, var(--brand-900) 100%) !important;
+}
+.bg-accent-soft { background-color: var(--accent-soft) !important; }
+
+.card {
+  --bs-card-bg: var(--surface-1);
+  --bs-card-border-color: var(--bs-border-color);
+  --bs-card-border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: var(--surface-raised);
+  --bs-dropdown-border-color: var(--bs-border-color);
+  --bs-dropdown-link-hover-bg: var(--c-gray-100);
+  box-shadow: var(--shadow-md);
+}
+
+.form-control,
+.form-select {
+  background-color: var(--surface-1);
+  color: var(--color-ink);
+  border-color: var(--bs-border-color);
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--c-clay-500);
+  box-shadow: var(--shadow-focus);
+}
+
+/* ---- elevated selectable "option card" ----
+   Shared visual language for any pick-one-of-many UI: signup role picker,
+   checkout address/payment method selection, category icon picker. */
+.option-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: var(--space-4) var(--space-3);
+  border: 2px solid var(--bs-border-color);
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+  color: var(--color-ink);
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.option-card:hover {
+  border-color: var(--c-clay-500);
+  background: var(--c-sand-100);
+}
+.option-card--on,
+.option-card--on:hover {
+  border-color: var(--c-teal);
+  background: var(--c-teal-100);
+  box-shadow: 0 0 0 3px rgba(15, 48, 64, 0.12);
+}
+.option-card .check {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  color: var(--c-teal);
+  font-size: 1rem;
+}

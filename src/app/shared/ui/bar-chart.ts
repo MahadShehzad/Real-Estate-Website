@@ -26,7 +26,7 @@ import { TimeSeriesPoint } from '../../core/models/vendor.model';
               [attr.width]="barWidth()"
               [attr.height]="bar.h"
               rx="3"
-              fill="var(--c-teal, #0f3040)"
+              fill="var(--bs-primary, #5c3d33)"
               opacity="0.85"
             >
               <title>{{ bar.label }}: {{ bar.value | number: '1.0-0' }}</title>
@@ -36,7 +36,7 @@ import { TimeSeriesPoint } from '../../core/models/vendor.model';
               y="175"
               text-anchor="middle"
               font-size="9"
-              fill="#6b6b6b"
+              fill="var(--c-gray-600, #6b6b6b)"
             >
               {{ bar.short }}
             </text>

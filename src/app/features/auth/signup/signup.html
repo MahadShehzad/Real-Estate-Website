@@ -1,8 +1,11 @@
-<div class="auth-wrap">
+<div class="auth-wrap position-relative">
+  <div class="position-absolute top-0 end-0 m-3">
+    <app-theme-toggle />
+  </div>
   <div class="auth-card p-4 p-sm-5">
     <div class="text-center mb-4">
       <a routerLink="/" class="d-inline-flex align-items-center gap-2 fw-bold fs-4 text-brand">
-        <i class="bi bi-bag-check-fill text-accent"></i> onlineStore
+        <app-logo [size]="30" /> Shopnest
       </a>
       <p class="text-muted mb-0 mt-1">Create your account</p>
     </div>

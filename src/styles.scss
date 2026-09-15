@@ -1,0 +1,23 @@
+/* ===========================================================================
+   Shopnest — design system
+   Bootstrap does the layout / components; these partials re-skin its tokens,
+   add the light/dark theme system, and layer the app's own patterns on top.
+   Mobile-first (Bootstrap default).
+   =========================================================================== */
+
+@use "styles/tokens";
+@use "styles/bootstrap-remap";
+@use "styles/base";
+@use "styles/components";
+@use "styles/shell";
+@use "styles/topnav";
+@use "styles/hero";
+@use "styles/search-widget";
+@use "styles/dashboard";
+@use "styles/auth";
+@use "styles/contact-page";
+@use "styles/toast";
+/* Last on purpose: [data-theme="dark"] and :root have equal specificity, so
+   the dark overrides only win if they are emitted after everything they
+   redeclare (notably the --bs-* remaps). */
+@use "styles/dark-mode";

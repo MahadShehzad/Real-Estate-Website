@@ -14,6 +14,17 @@ import { StarRatingComponent } from './star-rating';
   imports: [RouterLink, MoneyPipe, FallbackImgDirective, StarRatingComponent],
   template: `
     <div class="card h-100 position-relative product-card">
+      @if (badge()) {
+        <span
+          class="badge position-absolute top-0 start-0 m-2"
+          [class.text-bg-danger]="badge() === 'sale'"
+          [class.text-bg-success]="badge() === 'new'"
+          [class.bg-accent-soft]="badge() === 'bestseller'"
+          [class.text-brand]="badge() === 'bestseller'"
+        >
+          {{ badge() === 'sale' ? 'Sale' : badge() === 'new' ? 'New' : 'Bestseller' }}
+        </span>
+      }
       @if (canShop()) {
         <button
           type="button"
@@ -73,6 +84,7 @@ export class ProductCardComponent {
   private readonly notify = inject(NotificationService);
 
   readonly product = input.required<ProductSummary>();
+  readonly badge = input<'new' | 'sale' | 'bestseller' | null>(null);
   readonly wishlistChanged = output<void>();
 
   protected readonly busy = signal(false);

@@ -1,0 +1,22 @@
+/* Remaps Bootstrap's own CSS variables onto our design tokens. */
+
+:root {
+  --bs-primary: var(--c-teal);
+  --bs-primary-rgb: 92, 61, 51;
+  --bs-secondary: var(--c-slate-700);
+  --bs-secondary-rgb: 61, 43, 38;
+  --bs-body-bg: var(--surface-2);
+  --bs-body-color: var(--color-ink);
+  --bs-link-color: var(--brand-600);
+  --bs-link-color-rgb: 138, 90, 72;
+  --bs-link-hover-color: var(--c-teal);
+  --bs-border-color: var(--c-gray-200);
+  --bs-border-radius: var(--radius-md);
+  --bs-font-sans-serif: var(--font-body);
+
+  --accent: var(--c-clay-500);
+  --accent-soft: var(--c-sand-100);
+  --shell-header-h: 60px;
+  --shell-sidebar-w: 250px;
+  --shell-topnav-h: 68px;
+}

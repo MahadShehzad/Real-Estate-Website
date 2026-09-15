@@ -1,0 +1,57 @@
+/* Base element styles + the theme-switch animation. */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3,
+.display-font {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* ---- buttery-smooth theme switch ----
+   1) Browsers that support the View Transitions API get a circular reveal
+      that expands from the toggle button (coordinates set as CSS vars by
+      ThemeService just before the transition starts).
+   2) Everywhere else, a plain color/background/border crossfade on the
+      surfaces that actually change between themes. */
+
+body, .card, .btn, .form-control, .form-select, .dropdown-menu,
+.shell-header, .shell-sidebar, .topnav, .nav-link, .badge,
+.auth-card, .list-group-item, table, th, td {
+  transition:
+    background-color var(--theme-transition) ease,
+    border-color var(--theme-transition) ease,
+    color var(--theme-transition) ease,
+    box-shadow var(--theme-transition) ease;
+}
+
+@supports (view-transition-name: root) {
+  ::view-transition-old(root) {
+    animation: none;
+  }
+  ::view-transition-new(root) {
+    animation: theme-reveal var(--theme-transition) ease;
+    clip-path: circle(0% at var(--theme-toggle-x) var(--theme-toggle-y));
+  }
+  @keyframes theme-reveal {
+    to {
+      clip-path: circle(150% at var(--theme-toggle-x) var(--theme-toggle-y));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}

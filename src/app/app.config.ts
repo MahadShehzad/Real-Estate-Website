@@ -16,6 +16,7 @@ import { AuthService } from './core/services/auth.service';
 import { MetaService } from './core/services/meta.service';
 import { CartService } from './core/services/cart.service';
 import { WishlistService } from './core/services/wishlist.service';
+import { ThemeService } from './core/services/theme.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,6 +34,8 @@ export const appConfig: ApplicationConfig = {
       const auth = inject(AuthService);
       const cart = inject(CartService);
       const wishlist = inject(WishlistService);
+
+      inject(ThemeService).init();
 
       await Promise.all([meta.load(), auth.restore()]);
       if (auth.isAuthenticated()) {

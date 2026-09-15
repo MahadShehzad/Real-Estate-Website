@@ -1,0 +1,103 @@
+/* Dark theme — redefines the same semantic custom-property names, so any
+   template already consuming var(--bs-body-bg)/var(--surface-1)/etc. needs
+   zero markup changes to support it. Dark surfaces are deep warm-brown tones
+   from the same almond/rose family as the light theme. */
+
+[data-theme="dark"] {
+  --surface-1: #2f2320;
+  --surface-2: #241a17;
+  --surface-raised: #382a26;
+  --color-ink: #f3e7e2;
+
+  --c-mist: var(--surface-2);
+  --c-mist-100: var(--surface-1);
+  --c-gray-100: #382a26;
+  --c-gray-200: #4a3833;
+  --c-gray-300: #5c4640;
+  --c-gray-600: #c9b7b1;
+
+  --c-teal-100: #4a3833;
+
+  /* brand/accent as foreground → light tones so they read on dark surfaces,
+     and the soft tint they sit on (.bg-accent-soft) darkens with them */
+  --brand-fg: var(--almond-silk);
+  --accent-fg: var(--almond-silk-2);
+  --accent-soft: #4a3833;
+
+  --bs-primary: var(--almond-silk);
+  --bs-primary-rgb: 211, 171, 158;
+  --bs-secondary: var(--ink-soft);
+  --bs-secondary-rgb: 125, 104, 99;
+  --bs-body-bg: var(--surface-2);
+  --bs-body-color: var(--color-ink);
+  --bs-body-color-rgb: 243, 231, 226;
+  /* Bootstrap's own muted-text vars default to a near-black rgba, which is
+     invisible on dark surfaces — .text-muted is used on nearly every page. */
+  --bs-secondary-color: rgba(243, 231, 226, 0.75);
+  --bs-tertiary-color: rgba(243, 231, 226, 0.55);
+  --bs-emphasis-color: var(--color-ink);
+  --bs-link-color: var(--almond-silk);
+  --bs-link-color-rgb: 211, 171, 158;
+  --bs-link-hover-color: var(--almond-silk-2);
+  --bs-border-color: #4a3833;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
+  --shadow-focus: 0 0 0 0.2rem rgba(211, 171, 158, 0.4);
+}
+
+/* Outline buttons draw their text/border from a brand or grey tone picked for
+   light surfaces (quantity steppers, toolbars, modal actions). On dark
+   surfaces those tones vanish, so the outline variants get light foregrounds
+   and a light fill that flips the label dark on hover/active. */
+[data-theme="dark"] .btn-outline-secondary {
+  --bs-btn-color: var(--color-ink);
+  --bs-btn-border-color: var(--c-gray-300);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: var(--almond-silk);
+  --bs-btn-hover-border-color: var(--almond-silk);
+  --bs-btn-active-color: var(--ink);
+  --bs-btn-active-bg: var(--almond-silk);
+  --bs-btn-active-border-color: var(--almond-silk);
+  --bs-btn-disabled-color: var(--color-ink);
+  --bs-btn-disabled-border-color: var(--c-gray-300);
+}
+[data-theme="dark"] .btn-outline-primary {
+  --bs-btn-color: var(--almond-silk);
+  --bs-btn-border-color: var(--almond-silk);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: var(--almond-silk);
+  --bs-btn-hover-border-color: var(--almond-silk);
+  --bs-btn-active-color: var(--ink);
+  --bs-btn-active-bg: var(--almond-silk);
+  --bs-btn-active-border-color: var(--almond-silk);
+  --bs-btn-disabled-color: var(--almond-silk);
+  --bs-btn-disabled-border-color: var(--almond-silk);
+}
+[data-theme="dark"] .btn-outline-danger {
+  --bs-btn-color: #e0958a;
+  --bs-btn-border-color: #e0958a;
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: #e0958a;
+  --bs-btn-hover-border-color: #e0958a;
+  --bs-btn-disabled-color: #e0958a;
+  --bs-btn-disabled-border-color: #e0958a;
+}
+[data-theme="dark"] .btn-outline-success {
+  --bs-btn-color: #9fc28f;
+  --bs-btn-border-color: #9fc28f;
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: #9fc28f;
+  --bs-btn-hover-border-color: #9fc28f;
+  --bs-btn-disabled-color: #9fc28f;
+  --bs-btn-disabled-border-color: #9fc28f;
+}
+
+/* Icon-on-tint chips (stat cards, perks) need a lighter glyph once their
+   background tint goes dark, or the icon disappears into its own chip. */
+[data-theme="dark"] .stat-card__icon--brand { background: #4a3833; color: var(--almond-silk); }
+[data-theme="dark"] .stat-card__icon--success { background: #2d3a28; color: #9fc28f; }
+[data-theme="dark"] .stat-card__icon--warning { background: #3d3120; color: #e0b876; }
+[data-theme="dark"] .stat-card__icon--danger { background: #3d2420; color: #e0958a; }
+[data-theme="dark"] .stat-card__icon--neutral { background: var(--c-gray-100); color: var(--color-ink); }

@@ -64,3 +64,10 @@ export function navFor(role: Role | null): NavSection[] {
     }))
     .filter((section) => section.items.length > 0);
 }
+
+/** Customer account links for the top-nav's user dropdown (cart/browse already have their own icons). */
+export function customerAccountLinks(): NavItem[] {
+  const shop = ALL.find((s) => s.heading === 'Shop');
+  if (!shop) return [];
+  return shop.items.filter((item) => item.path !== '/app/shop' && item.path !== '/app/cart');
+}

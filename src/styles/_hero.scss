@@ -1,0 +1,51 @@
+/* Hero / promo banner (app-hero-banner). */
+
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  color: #fff;
+  padding: var(--space-7) var(--space-6);
+  background: linear-gradient(160deg, var(--brand-600) 0%, var(--brand-900) 100%);
+}
+.hero-banner--image {
+  background-size: cover;
+  background-position: center;
+}
+.hero-banner--image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(15, 48, 64, 0.88) 0%, rgba(10, 31, 42, 0.75) 100%);
+}
+.hero-banner__content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+}
+.hero-banner__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--c-clay-300);
+}
+.hero-banner__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  margin: var(--space-2) 0;
+}
+.hero-banner__subtitle {
+  color: rgba(255, 255, 255, 0.85);
+}
+.hero-banner__shape {
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(234, 201, 193, 0.4) 0%, transparent 70%);
+}

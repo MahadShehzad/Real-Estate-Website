@@ -1,0 +1,146 @@
+/* Home-page "advanced search" widget: segmented tabs + white search bar + price slider. */
+
+.search-tabs {
+  display: inline-flex;
+  gap: 0.25rem;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.25rem;
+  border-radius: var(--radius-md);
+}
+.search-tabs__btn {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.search-tabs__btn.active {
+  background: #fff;
+  color: var(--c-teal);
+}
+
+/* Always a light floating card, in either theme — it sits on top of a hero
+   image/gradient, so it must not swap to a dark surface in dark mode. */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: var(--snow);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 0.6rem;
+  margin-top: 0.75rem;
+}
+.search-bar__input,
+.search-bar__select {
+  flex: 1 1 160px;
+  min-width: 0;
+  border: 1px solid var(--almond-silk-2);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
+  background: var(--white);
+  color: var(--ink);
+}
+.search-bar__input::placeholder {
+  color: var(--ink-soft);
+  opacity: 1;
+}
+.search-bar__input:focus,
+.search-bar__select:focus {
+  outline: none;
+  border-color: var(--accent-600);
+  box-shadow: var(--shadow-focus);
+}
+.search-bar__advanced,
+.search-bar__submit {
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.search-bar__advanced {
+  background: var(--powder-petal);
+  color: var(--ink);
+}
+.search-bar__advanced:hover {
+  background: var(--almond-silk-2);
+}
+.search-bar__submit {
+  background: var(--accent-600);
+  color: #fff;
+}
+.search-bar__submit:hover {
+  background: var(--accent-700);
+}
+
+@media (max-width: 767.98px) {
+  .search-bar__input,
+  .search-bar__select {
+    flex-basis: 100%;
+  }
+}
+
+/* dual-thumb price range slider */
+.price-slider {
+  position: relative;
+  height: 2rem;
+}
+.price-slider__track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--c-gray-200);
+  border-radius: 999px;
+}
+.price-slider__fill {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--c-clay-500);
+  border-radius: 999px;
+}
+.price-slider__input {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  margin: 0;
+  background: transparent;
+  pointer-events: none;
+  appearance: none;
+}
+.price-slider__input::-webkit-slider-thumb {
+  appearance: none;
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--c-teal);
+  border: 3px solid #fff;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+.price-slider__input::-moz-range-thumb {
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--c-teal);
+  border: 3px solid #fff;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+.price-slider__input::-webkit-slider-runnable-track,
+.price-slider__input::-moz-range-track {
+  background: transparent;
+}

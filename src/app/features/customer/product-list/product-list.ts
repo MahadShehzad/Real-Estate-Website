@@ -36,9 +36,18 @@ export class ProductListComponent {
 
   private readonly routeQuery = toSignal(
     this.route.queryParamMap.pipe(
-      map((p) => ({ category: p.get('category') ?? '', search: p.get('search') ?? '' })),
+      map((p) => ({
+        category: p.get('category') ?? '',
+        search: p.get('search') ?? '',
+        brand: p.get('brand') ?? '',
+        sort: (p.get('sort') as Sort | null) ?? 'newest',
+        minPrice: p.get('minPrice') ? Number(p.get('minPrice')) : null,
+        maxPrice: p.get('maxPrice') ? Number(p.get('maxPrice')) : null,
+      })),
     ),
-    { initialValue: { category: '', search: '' } },
+    {
+      initialValue: { category: '', search: '', brand: '', sort: 'newest' as Sort, minPrice: null, maxPrice: null },
+    },
   );
 
   protected readonly categories = signal<Category[]>([]);
@@ -66,13 +75,14 @@ export class ProductListComponent {
   constructor() {
     this.catalog.categories().subscribe((c) => this.categories.set(c));
 
-    // reset filters + reload brand list when the route category/search changes
+    // seed filters from the route query (deep links from the home search widget) whenever it changes
     effect(() => {
       const q = this.routeQuery();
       this.page.set(1);
-      this.brand.set('');
-      this.priceMin.set(null);
-      this.priceMax.set(null);
+      this.brand.set(q.brand);
+      this.sort.set(q.sort);
+      this.priceMin.set(q.minPrice);
+      this.priceMax.set(q.maxPrice);
       this.catalog.filters(q.category || undefined).subscribe((f) => this.filterMeta.set(f));
     });
 

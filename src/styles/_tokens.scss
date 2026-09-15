@@ -1,0 +1,115 @@
+/* Design tokens — color primitives, spacing/radius/shadow scale, typography.
+   Runtime theme switching (light/dark) happens purely via these CSS custom
+   properties; _dark-mode.scss overrides the semantic ones under [data-theme="dark"].
+
+   Brand palette: warm almond/rose tones. The five named colors below are the
+   source of truth; everything else on this page (--c-teal-*, --c-clay-*,
+   --c-mist, --c-gray-*, etc.) is an alias pointing back at them, so every
+   partial/component that already reads those alias names re-themes for free. */
+
+:root {
+  /* ---- brand palette ---- */
+  --almond-silk: #d3ab9e;
+  --almond-silk-2: #eac9c1;
+  --powder-petal: #ebd8d0;
+  --snow: #fffbff;
+  --white: #fefeff;
+
+  /* ---- derived shades ----
+     The five brand colors above are all light pastels, meant for backgrounds
+     and soft tints — NEVER used directly as text or as a solid button/header
+     background (that combo has unreadable contrast with white text). Anything
+     that needs to carry text, be a link, or sit under white text uses one of
+     these much darker, contrast-checked shades from the same warm hue family
+     instead (all verified ≥ 4.5:1 against white/snow). */
+  --ink: #3d2b26; /* body text, ~9.7:1 on snow */
+  --ink-soft: #7d6863; /* muted text, ~5.2:1 on snow */
+  --brand-600: #8a5a48; /* links, ~5.8:1 on white */
+  --brand-700: #5c3d33; /* primary buttons/headers (white text), ~9.7:1 */
+  --brand-800: #45291f; /* primary hover/active, darker still */
+  --brand-900: #2e1811; /* deepest, dark-mode borders */
+  --accent-600: #9c5340; /* accent buttons/links (white text), ~5.6:1 */
+  --accent-700: #7c3f30; /* accent hover, darker */
+
+  /* ---- primitive aliases consumed by the rest of the design system ---- */
+  --c-teal-900: var(--brand-900);
+  --c-teal-700: var(--brand-700);
+  --c-teal-600: var(--brand-800);
+  --c-teal-500: var(--almond-silk);
+  --c-teal-100: var(--powder-petal);
+  --c-teal: var(--brand-700);
+
+  --c-slate-700: var(--ink);
+  --c-slate-500: var(--ink-soft);
+  --c-slate-200: var(--almond-silk-2);
+
+  --c-clay-600: var(--accent-700);
+  --c-clay-500: var(--accent-600);
+  --c-clay-300: var(--almond-silk-2);
+  --c-sand-100: var(--powder-petal);
+
+  --c-mist: var(--powder-petal);
+  --c-mist-100: var(--snow);
+  --c-white: var(--white);
+
+  --c-gray-50: var(--snow);
+  --c-gray-100: #f3e6e1;
+  --c-gray-200: #e0c7bc;
+  --c-gray-300: var(--almond-silk-2);
+  --c-gray-600: var(--ink-soft);
+  --c-gray-800: var(--ink);
+  --c-gray-900: var(--brand-900);
+
+  /* ---- semantic surfaces / text (light) ---- */
+  --surface-1: var(--snow);
+  --surface-2: var(--powder-petal);
+  --surface-raised: var(--white);
+  --color-ink: var(--ink);
+  /* Brand/accent used as FOREGROUND on a themed surface (.text-brand,
+     .text-accent, icons). Must flip with the theme — a dark brand tone is
+     invisible once the card behind it goes dark. */
+  --brand-fg: var(--brand-700);
+  --accent-fg: var(--accent-600);
+  --color-success: #5c7a52;
+  --color-danger: #b2483a;
+  --color-warning: #ad7a2e;
+
+  /* ---- elevation ---- */
+  --shadow-sm: 0 1px 2px rgba(61, 43, 38, 0.08);
+  --shadow-md: 0 8px 24px rgba(61, 43, 38, 0.14);
+  --shadow-lg: 0 24px 60px rgba(61, 43, 38, 0.28);
+  --shadow-focus: 0 0 0 0.2rem rgba(211, 171, 158, 0.35);
+
+  /* ---- spacing ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+
+  /* ---- radius ---- */
+  --radius-sm: 0.4rem;
+  --radius-md: 0.6rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* ---- typography ---- */
+  --font-body: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-display: "Sora", var(--font-body);
+
+  /* ---- z-index scale ---- */
+  --z-dropdown: 1030;
+  --z-sticky: 1035;
+  --z-backdrop: 1040;
+  --z-sidebar: 1045;
+  --z-toast: 1090;
+
+  /* ---- theme-switch animation ---- */
+  --theme-transition: 480ms;
+  --theme-toggle-x: 50%;
+  --theme-toggle-y: 50%;
+}
